@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Diagnostique{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/diagnostic.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="pagediagnostic">
+
+    <div class="contenudiagnostic">
+        <div class="contenudiagnostictitre">
+            <h2>
+                Diagnostique de stress
+            </h2>
+        </div>
+
+
+        <div class="contenudiagnosticcorp">
+
+        <div class="contenudiagnosticcorpentete">
+            <h4>
+                Diagnostique à faire
+            </h4>
+        </div>
+
+
+            {% for questionnaire in questionnaires %}
+            <div class="questionnaire">
+                <div class="questionnairecontenu">
+                    <div class="questionnaireicon">
+                        <i class="fa-solid fa-clipboard-question" style="font-size:60px;"></i>
+                    </div>
+                    <div class="questionnairetexte">
+                        <div class="questionnairetextetitre">
+                            <p>
+                                {{ questionnaire.titre }}
+                            </p>
+                        </div>
+                        <div class="questionnairetextedesc">
+                            <p>
+                                {{ questionnaire.description }}
+                            </p>
+                        </div>
+                        <div class="questionnairetextequestionbouton">
+                            <div class="questionnairetextequestionboutonnbquestion">
+                                <div class="questionnairetextequestionboutonnbquestionicon">
+                                    <i class="fa-solid fa-question" style="font-size:18px; margin-right: 6px;"></i>
+                                </div>
+                                <div class="questionnairetextequestionboutonnbquestiontexte">
+                                    <p>
+                                        {{ questionnaire.questions|length }} Questions
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="questionnairetextequestionboutonbouton">
+                                <button class="toggle-questions">Dérouler le diagnostique</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="questions" style="display:none;">
+                    <ul>
+                        {% for question in questionnaire.questions %}
+                        <div class="questionunique">
+                            <li>
+                                <div class="questionuniquenumero">
+                                    Question n°{{ loop.index }}
+                                </div>
+                                <div class="questionuniqueconsigne">
+                                    {{ question.texteQuestion }}
+                                </div>
+                            </li>
+                        </div>
+                            
+                        {% endfor %}
+                    </ul>
+                    <div class="boutoncommencer">
+                        <button>
+                            <a href="{{ path('app_diagnostic_start', { id: questionnaire.id }) }}" class="btn btn-primary">
+                                Commencer
+                            </a>
+                        </button>  
+                    </div>
+                    
+                </div>
+
+                
+            </div>
+            {% endfor %}
+
+            
+
+            {% if questionnairesFaits is not empty %}
+            <div class="diagnostic-deja-faits">
+                <div class="contenudiagnosticcorpentete">
+                    <h4>
+                        Diagnostique déjà réalisé
+                    </h4>
+                </div>
+            {% for questionnaire in questionnairesFaits %}
+                                    
+                <div class="questionnaire">
+                <div class="questionnairecontenu">
+                    <div class="questionnaireicon">
+                        <i class="fa-solid fa-check-circle" style="color: green; font-size: 60px;"></i>
+                    </div>
+                    <div class="questionnairetexte">
+                        <div class="questionnairetextetitre">
+                            <p>
+                                {{ questionnaire.titre }}
+                            </p>
+                        </div>
+                        <div class="questionnairetextedesc">
+                            <p>
+                                {{ questionnaire.description }}
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>   
+            </div>
+            {% endfor %}
+    </div>
+{% endif %}
+
+
+
+
+        </div>
+
+    </div>
+
+
+<!--
+{% for questionnaire in questionnaires %}
+    <div class="questionnaire">
+        <h2>{{ questionnaire.titre }}</h2>
+        <p>{{ questionnaire.description }}</p>
+        <button class="toggle-questions">Voir les questions</button>
+        
+        <div class="questions" style="display:none;">
+            <ul>
+                {% for question in questionnaire.questions %}
+                    <li>{{ question.texteQuestion }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+       
+    </div>
+{% endfor %}
+-->
+</div>
+
+
+
+
+{% endblock %}

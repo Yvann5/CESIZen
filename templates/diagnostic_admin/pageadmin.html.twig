@@ -1,0 +1,65 @@
+{# templates/diagnostic_admin/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des questionnaires{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/pageadmin.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="pageadmin">
+        <div class="pageadmintitre">
+            <h2>
+                Gestion des questionnaires
+            </h2>
+        </div>
+        <div class="pageadmincorp">
+
+        <div class="creequestionnaire">
+            <button>
+                <a href="{{ path('app_diagnostic_create') }}" class="btn btn-primary">Créer un nouveau questionnaire</a>
+            </button>
+        </div>
+
+            {% for questionnaire in questionnaires %}
+            <div class="questionnaire">
+                <div class="questionnairecontenu">
+                    <div class="questionnaireicon">
+                        <i class="fa-solid fa-clipboard-question" style="font-size:40px; color: #6BFC56"></i>
+                    </div>
+                    <div class="questionnairetexte">
+                        <div class="questionnairetextetitre">
+                            <p>
+                                {{ questionnaire.titre }}
+                            </p>
+                        </div>
+                        <div class="questionnairetextedesc">
+                            <p>
+                                {{ questionnaire.description }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="questionnairebouton">
+                        <div class="questionnaireboutonmodifier">
+                            <button>
+                                <a href="{{ path('app_diagnostic_edit', {id: questionnaire.id}) }}" class="btn btn-warning">✏️</a>
+                            </button>
+                        </div>
+                        <div class="questionnaireboutonsupprimer">
+                            <button>
+                                <a href="{{ path('app_diagnostic_delete', {id: questionnaire.id}) }}" class="btn btn-danger">❌</a>
+                            </button>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            {% endfor %}
+
+        
+        </div>
+
+        
+    </div>
+
+{% endblock %}

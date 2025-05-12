@@ -1,0 +1,67 @@
+.pagequestion {
+    margin-left: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+.contenuquestion {
+    width: 50%; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 6px solid #6BFC56;
+}
+
+.contenuquestion .contenuquestionprogress {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.pagequestion .contenuquestion .contenuquestiontitre {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.pagequestion .contenuquestion .contenuquestiontitre h2{
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+}
+
+.pagequestion .contenuquestion .contenuquestioncorp {
+}
+
+.pagequestion .contenuquestion .contenuquestioncorp .contenuquestioncorpquestion {
+}
+
+.pagequestion .contenuquestion .contenuquestioncorp .contenuquestioncorpquestion h4 {
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+}
+
+.pagequestion .contenuquestion .contenuquestioncorp .contenuquestioncorpreponse form div label {
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: black; 
+}
+
+.pagequestion .contenuquestion .contenuquestioncorp .contenuquestioncorpreponse form .boutouquestionsuivante {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6%;
+}
+
+.pagequestion .contenuquestion .contenuquestioncorp .contenuquestioncorpreponse form .boutouquestionsuivante button {
+    color: white;
+    font-weight: 800;
+    background-color: #6BFC56;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+}
+

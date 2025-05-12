@@ -1,0 +1,82 @@
+{# templates/diagnostic_admin/create.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un questionnaire{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/admin_create.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="pagecreate">
+    <div class="pagecreatecontenu">
+        <div class="pagecreatetitre">
+            <h3>Créer un nouveau questionnaire</h3>
+        </div>
+
+        <div class="pagecreatecorp">
+            <div class="pagecreatecorpquestionnaire">
+                {{ form_start(form) }}
+                <div class="pagecreatecorpquestionnairetitre">
+                    {{ form_row(form.titre) }}
+                </div>
+                <div class="pagecreatecorpquestionnairedescription">
+                    {{ form_row(form.description) }}
+                </div>
+
+                <div class="pagecreatecorpquestionnairetitrequestion">
+                    <h4>Questions du questionnaire</h4>
+                </div>
+
+                {# Prépare le prototype complet des questions avec leur prototype de réponses intégré #}
+                {% set questionPrototype %}
+                    {% set q = form.questions.vars.prototype %}
+                    <div class="question-block">
+                        {{ form_row(q.texteQuestion) }}
+
+                        <div class="reponses-container"
+                             data-prototype="{{ form_widget(q.reponses.vars.prototype)|e('html_attr') }}">
+                            <h6 class="reponses-title">Réponses</h6>
+                        </div>
+                    </div>
+                {% endset %}
+
+                <div class="pagecreatecorpquestionnairereponse"
+                     id="questionnaire_questions"
+                     data-prototype="{{ questionPrototype|e('html_attr') }}">
+                    {% for questionForm in form.questions %}
+                        <div class="question-block">
+                            {{ form_row(questionForm.texteQuestion) }}
+
+                            <div class="reponses-container"
+                                 data-prototype="{{ form_widget(questionForm.reponses.vars.prototype)|e('html_attr') }}">
+                                <h6 class="reponses-title">Réponses</h6>
+                                {% for reponseForm in questionForm.reponses %}
+                                    <div class="reponse-block">
+                                        {{ form_row(reponseForm.texteReponse) }}
+                                        {{ form_row(reponseForm.valeur) }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <button type="button" class="add-reponse">Ajouter une réponse</button>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="boutonajouter">
+                    <button type="button" id="add-question">Ajouter une question</button>
+                </div>
+
+                <div class="boutoncreer">
+                    <button type="submit">Créer</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

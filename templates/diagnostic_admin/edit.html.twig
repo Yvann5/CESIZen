@@ -1,0 +1,64 @@
+{# templates/diagnostic_admin/edit.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le questionnaire{% endblock %}
+    
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/admin_edit.css') }}">
+    {% endblock %}
+
+{% block body %}
+
+    <div class="pageedit">
+        <div class="pageeditcontenu">
+            <div class="pageedittitre">
+                <h3>Modifier le questionnaire : {{ questionnaire.titre }}</h3>
+            </div>
+
+            <div class="pageeditcorp">
+                <div class="pageeditcorpquestionnaire">
+                    {{ form_start(form) }}
+                        <div class="pageeditcorpquestionnairetitre">
+                            {{ form_row(form.titre) }}
+                        </div>
+                        <div class="pageeditcorpquestionnairedescription">
+                            {{ form_row(form.description) }}
+                        </div>
+                        <div class="pageeditcorpquestionnairetitrequestion">
+                            <h4>Questions associé au questionnaire</h4>
+                        </div>
+                        <div class="pageeditcorpquestionnairereponse" id="questionnaire_questions" data-prototype="{{ form_widget(form.questions.vars.prototype)|e('html_attr') }}">
+                            {% for questionForm in form.questions %}
+                                <div class="question-block">
+                                    <h5 class="question-title">Question n°{{ loop.index }}</h5>
+                                    <div class="mb-3">
+                                        {{ form_row(questionForm.texteQuestion) }}
+                                    </div>
+
+                                    <div class="reponses-container">
+                                        <h6 class="reponses-title">Réponses</h6>
+                                        {% for reponseForm in questionForm.reponses %}
+                                            <div class="reponse-block">
+                                                {{ form_row(reponseForm.texteReponse) }}
+                                                {{ form_row(reponseForm.valeur) }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+        </div>
+                <div class="boutonenregistrer">
+                    <button type="submit">Enregistrer</button>
+                </div>
+                    {{ form_end(form) }}
+                </div>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+
+{% endblock %}

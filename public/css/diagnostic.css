@@ -1,0 +1,135 @@
+.pagediagnostic {
+    margin-left: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+.contenudiagnostic {
+    width: 50%; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 6px solid #6BFC56;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnostictitre {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnostictitre h2 {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp {
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .contenudiagnosticcorpentete {
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .contenudiagnosticcorpentete h4 {
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+    font-size: 18px;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire {
+    padding: 2%;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2%;
+
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu .questionnaireicon  {
+    margin-right: 2%;    
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu .questionnairetexte {
+    width: 100%;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu .questionnairetexte .questionnairetextetitre p {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu .questionnairetexte .questionnairetextedesc p {
+    font-family: 'Roboto', sans-serif;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu .questionnairetexte .questionnairetextequestionbouton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu .questionnairetexte .questionnairetextequestionbouton .questionnairetextequestionboutonnbquestion {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu .questionnairetexte .questionnairetextequestionbouton .questionnairetextequestionboutonnbquestion .questionnairetextequestionboutonnbquestiontexte p {
+    font-family: 'Roboto', sans-serif;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questionnairecontenu .questionnairetexte .questionnairetextequestionbouton .questionnairetextequestionboutonbouton button {
+    color: white;
+    font-weight: 800;
+    background-color: #6BFC56;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questions .questionunique {
+    margin-bottom: 1.5%;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questions .questionunique .questionuniquenumero {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questions .questionunique .questionuniqueconsigne {
+    font-family: 'Roboto', sans-serif;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questions .boutoncommencer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questions .boutoncommencer button {
+    color: white;
+    font-weight: 800;
+    background-color: #6BFC56;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.pagediagnostic .contenudiagnostic .contenudiagnosticcorp .questionnaire .questions .boutoncommencer button a {
+    color: white;
+    text-decoration: none;
+}

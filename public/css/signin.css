@@ -1,0 +1,108 @@
+html {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to bottom right, #6BFC56, #93D94A);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.globalconnexion .connexion {
+    padding: 10%;
+    width: 300px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.messageerror {
+    background-color: rgba(255, 0, 0, 0.19);
+    color: rgb(119, 16, 16);
+    padding: 14px;
+    padding-left: 16px;
+    border: 1px solid rgb(167, 40, 40);
+    border-radius: 4px;
+    margin-bottom: 6%;
+}
+
+.globalconnexion .connexion .connexionimg {
+    text-align: center;
+}
+
+.globalconnexion .connexion .connexionimg img {
+    width: 60px;
+    height: auto;
+}
+
+.globalconnexion .connexion .connexiontitre h2 {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+}
+
+.globalconnexion .connexion .connexionform {
+    display: flex;
+    flex-direction: column;
+}
+
+.globalconnexion .connexion .connexionform .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4%;
+}
+
+.globalconnexion .connexion .connexionform .form-group label {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 1%;
+}
+
+.globalconnexion .connexion .connexionform .form-group input {
+    padding: 10px;
+    border: 3px solid #6BFC56;
+    color: black;
+}
+
+.globalconnexion .connexion .connexionform .form-group input:focus {
+    outline: none;
+    border: 3px solid #6BFC56;
+}
+
+.globalconnexion .connexion .connexionform .connexionbouton {
+
+}
+.globalconnexion .connexion .connexionform .connexionbouton .connexionboutonconnexion {
+    text-align: center;
+    margin-top: 8%;
+}
+
+.globalconnexion .connexion .connexionform .connexionbouton .connexionboutonconnexion button {
+    padding: 12px; 
+    width: 220px;
+    background-color: #6BFC56;
+    color: white;
+    border: none;
+    font-weight: 800;
+    border-radius: 20px;
+    font-size: 18px;
+}
+
+.globalconnexion .connexion .connexionform .connexionbouton .connexionboutonconnexion button:hover {
+    cursor: pointer;
+}
+
+.globalconnexion .connexion .connexionform .connexionbouton .connexionboutoninscription {
+    text-align: center;
+    margin-top: 3%;
+}
+
+.globalconnexion .connexion .connexionform .connexionbouton .connexionboutoninscription a {
+    color: #2E41EE;
+    text-decoration: none;
+}

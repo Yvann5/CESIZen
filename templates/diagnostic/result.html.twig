@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultat du Diagnostic{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/result.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<div class="pageresultat">
+
+    <div class="contenuresultat">
+
+        {% if app.user is null %}
+            <div class="utilisateurpasconnecte">
+                <p class="info-message">Vous n'êtes pas connecté, le résultat n'a pas été enregistré.</p>
+            </div>
+        {% endif %}
+
+        <div class="contenuresultattitre">
+            <h2>
+                Resultat du Diagnostique
+            </h2>
+        </div>
+
+        <div class="contenuresultatcorp">
+
+            <div class="contenuresultatimage">
+                    {% if score >= 10 %}
+                        <img src="{{ asset('img/stresseleve.png') }}" alt="">
+                    {% elseif score >= 5 %}
+                        <img src="{{ asset('img/stressmodere.png') }}" alt="">
+                    {% else %}
+                        <img src="{{ asset('img/stressfaible.png') }}" alt="">
+                    {% endif %}
+            </div>
+
+            <div class="contenuresultatscore">
+                <h4>
+                    {{ score }} Points
+                </h4>
+            </div>
+
+            <div class="contenuresultatdescription">
+                {% if score >= 10 %}
+                    <p>Vous avez un niveau de stress élevé. Il est recommandé de consulter un professionnel pour en discuter.</p>
+                {% elseif score >= 5 %}
+                    <p>Votre niveau de stress est modéré. Prenez du temps pour vous détendre et réduire la pression.</p>
+                {% else %}
+                    <p>Votre niveau de stress est faible. Continuez à prendre soin de vous !</p>
+                {% endif %}
+            </div>
+
+            <div class="contenuresultatbouton">
+                <div class="contenuresultatboutonaccueil">
+                    <button>
+                        <a href="{{ path('app_home') }}">Retour à l'accueil</a>    
+                    </button>
+                </div>
+                <div class="contenuresultatboutondiagnostique">
+                    <button>
+                        <a href="{{ path('app_diagnostic') }}">Retour aux diagnostics</a>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--
+<div class="pagediagnostic">
+
+    <div class="contenudiagnostic">
+        <div class="contenudiagnostictitre">
+            <h2>Résultat du Diagnostic</h2>
+        </div>
+
+        <div class="contenudiagnosticcorp">
+            <div class="resultat">
+                <h3>Votre score final est :</h3>
+                <div class="score">
+                    <p>{{ score }} Points</p>
+                </div>
+
+                <div class="resultat-description">
+                    {% if score >= 10 %}
+                        <p>Vous avez un niveau de stress élevé. Il est recommandé de consulter un professionnel pour en discuter.</p>
+                    {% elseif score >= 5 %}
+                        <p>Votre niveau de stress est modéré. Prenez du temps pour vous détendre et réduire la pression.</p>
+                    {% else %}
+                        <p>Votre niveau de stress est faible. Continuez à prendre soin de vous !</p>
+                    {% endif %}
+                </div>
+
+                {% if app.user is null %}
+                    <p class="info-message">Vous n'êtes pas connecté, le résultat n'a pas été enregistré.</p>
+                {% endif %}
+                <div class="resultat-actions">
+                    <a href="{{ path('app_diagnostic') }}" class="btn btn-primary">Retour aux diagnostics</a>
+                    <a href="{{ path('app_home') }}" class="btn btn-secondary">Retour à l'accueil</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+!-->
+{% endblock %}

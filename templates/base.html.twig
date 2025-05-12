@@ -4,14 +4,75 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        
+
         {% block stylesheets %}
         {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% if app.request.attributes.get('_route') not in ['app_login', 'app_register'] %}
+            <div class="sidebar">
+                <div class="sidebarentete">
+                    <div class="sidebarimg">
+                        <img src="{{ asset('img/logo.png') }}" alt="">
+                    </div>
+                    <div class="sidebartitre">
+                        <h2>CESIZen</h2>
+                    </div>
+                </div>
+                <div class="sidebarcorp">
+                    <div class="sidebarcorpsearch">
+                        <div class="search-container">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" placeholder="Rechercher...">
+                        </div>                
+                    </div>
+                    <ul class="sidebar-links">
+                        <li><a href="{{ path('app_home') }}"><i class="fas fa-home icon"></i>Accueil</a></li>
+                        <li><a href="{{ path('app_diagnostic') }}"><i class="fas fa-folder icon"></i>Diagnostique</a></li>
+                        <li><a href="{{ path('app_diagnostic_admin') }}"><i class="fas fa-cog icon"></i>Admin</a></li>
+                        {% if app.user %}
+                        <li><a href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt icon"></i>Déconnexion</a></li>
+                        {% else %}
+                        <li><a href="{{ path('app_login') }}"><i class="fas fa-sign-in-alt icon"></i>Connexion</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="sidebar-profile">
+                    {% if app.user %}
+                            <div class="profile-initials">
+                                {{ app.user.prenom|slice(0, 1)|upper }}{{ app.user.nom|slice(0, 1)|upper }}
+                            </div>
+                            <div class="profile-name">
+                                <p>{{ app.user.prenom }} {{ app.user.nom }}</p>
+                            </div>
+                        {% else %}
+                            <div class="profile-initials">
+                            xx
+                            </div>
+                            <div class="profile-name">
+                                Utilisateur non connecté
+                            </div>
+                        {% endif %}                    
+                </div>
+                
+            </div>
+        {% endif %}
+            {% block body %}
+            {% endblock %}
+        
     </body>
+
+    {% block javascripts %}
+        <script src="{{ asset('js/app.js') }}"></script>
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+
+
 </html>

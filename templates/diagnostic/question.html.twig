@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Diagnostique{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/question.css') }}">
+{% endblock %}
+{% block body %}
+
+
+<div class="pagequestion">
+
+    <div class="contenuquestion">
+
+        <div class="contenuquestionprogress">
+            {{ progress }}
+        </div>
+
+        <div class="contenuquestiontitre">
+            <h2>
+                Diagnostique de stress
+            </h2>
+        </div>
+
+        <div class="contenuquestioncorp">
+            <div class="contenuquestioncorpquestion">
+                <h4> {{ question.texteQuestion }}</h4>
+            </div>
+            <div class="contenuquestioncorpreponse">
+                <form method="post" action="{{ path('app_diagnostic_answer') }}">
+                    {% for reponse in reponses %}
+                        <div>
+                            <input type="radio" id="reponse_{{ reponse.id }}" name="reponse_id" value="{{ reponse.id }}" required>
+                            <label for="reponse_{{ reponse.id }}">{{ reponse.texteReponse }}</label>
+                        </div>
+                    {% endfor %}
+                    <div class="boutouquestionsuivante">
+                        <button type="submit">Suivant</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--
+<div class="pagequestion">
+<h2>{{ question.texteQuestion }}</h2>
+
+<form method="post" action="{{ path('app_diagnostic_answer') }}">
+    {% for reponse in reponses %}
+        <div>
+            <input type="radio" id="reponse_{{ reponse.id }}" name="reponse_id" value="{{ reponse.id }}" required>
+            <label for="reponse_{{ reponse.id }}">{{ reponse.texteReponse }}</label>
+        </div>
+    {% endfor %}
+    <button type="submit">Suivant</button>
+</form>
+
+<p>Progression : {{ progress }}</p>
+
+
+</div> !-->
+
+    
+    {% endblock %}

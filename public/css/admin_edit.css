@@ -1,0 +1,163 @@
+.pageedit {
+    margin-left: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+.pageeditcontenu {
+    width: 50%; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 6px solid #6BFC56;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.pageedit .pageeditcontenu .pageedittitre {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pageedit .pageeditcontenu .pageedittitre h3 {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+}
+
+.pageedit .pageeditcontenu .pageeditcorp {
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire {
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairetitre {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1%;
+
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairetitre label {
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+    font-size: 18px;
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairetitre input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 4px;
+    border: 1px solid #6BFC56;
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairedescription {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1%;
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairedescription label {
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+    font-size: 18px;
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairedescription textarea {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 4px;
+    border: 1px solid #6BFC56;
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairetitrequestion h4 {
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+    font-size: 16px;
+    text-align: center;
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairereponse {
+}
+
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire .pageeditcorpquestionnairereponse .pageeditcorpquestionnairereponse {
+}
+
+
+/* Bloc global pour chaque question */
+.pageedit .pageeditcontenu .pageeditcorp .pageeditcorpquestionnaire form .pageeditcorpquestionnairereponse  .question-block {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-top: 1px solid #333;
+}
+
+/* Titre de la question */
+.pageedit .question-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Titre "Réponses" */
+.pageedit .reponses-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 8px;
+}
+
+/* Une réponse */
+.pageedit .reponse-block {
+    margin-bottom: 12px;
+    padding-left: 10px;
+    border-left: 3px solid #6BFC56;
+}
+
+/* Champs de texte et input */
+.pageedit input[type="text"],
+.pageedit input[type="number"] {
+    width: 90%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #6BFC56;
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.pageedit label {
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-size: 16px;
+}
+
+.boutonenregistrer {
+    text-align: center;
+}
+
+.boutonenregistrer button{
+    background-color: #6BFC56;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    
+}

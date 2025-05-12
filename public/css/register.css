@@ -1,0 +1,106 @@
+html {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to bottom right, #6BFC56, #93D94A);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.inscription {
+    padding: 10%;
+    width: 300px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.inscription .inscriptionimg {
+    text-align: center;
+}
+
+.inscription .inscriptionimg img {
+    width: 60px;
+    height: auto;
+}
+
+.inscription .inscriptiontitre h2 {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+
+}
+
+
+
+.inscription .inscriptionform form .group-form div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4%;
+}
+
+.inscription .inscriptionform form .group-form div label {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 1%;
+}
+
+.inscription .inscriptionform form .group-form div input {
+    padding: 10px;
+    border: 3px solid #6BFC56;
+    color: black;
+}
+
+.inscription .inscriptionform form .group-form div input:focus {
+    outline: none;
+    border: 3px solid #6BFC56;
+}
+
+.inscription .inscriptionform form .inscriptionbutton {
+    text-align: center;
+    margin-top: 8%;
+}
+
+.inscription .inscriptionform form .inscriptionbutton .inscriptionbuttoninscrire button {
+    padding: 12px; 
+    width: 220px;
+    background-color: #6BFC56;
+    color: white;
+    border: none;
+    font-weight: 800;
+    border-radius: 20px;
+    font-size: 18px;
+}
+
+.inscription .inscriptionform form .inscriptionbutton .inscriptionbuttoninscrire button:hover {
+    cursor: pointer;
+}
+
+.inscription .inscriptionform form .inscriptionbutton .inscriptionbuttonconnexion {
+    text-align: center;
+    margin-top: 3%;
+}
+
+.inscription .inscriptionform form .inscriptionbutton .inscriptionbuttonconnexion a {
+    color: #2E41EE;
+    text-decoration: none;
+}
+
+
+input.is-invalid {
+    border: 2px solid #e74c3c;
+    background-color: #fff0f0;
+}
+
+.invalid-feedback {
+    color: #e74c3c;
+    font-size: 0.875em;
+    margin-top: 5px;
+}

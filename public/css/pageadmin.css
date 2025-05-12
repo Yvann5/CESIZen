@@ -1,0 +1,60 @@
+.pageadmin {
+    margin-left: 280px;
+}
+
+.pageadmin .pageadmincorp {
+    width: 80%; 
+}
+
+.pageadmin .pageadmintitre h2 {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+}
+
+
+.pageadmin .pageadmincorp .questionnaire {
+    padding: 2%;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2%;
+
+}
+
+.pageadmin .pageadmincorp .questionnaire .questionnairecontenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pageadmin .pageadmincorp .questionnaire .questionnairecontenu .questionnaireicon  {
+    margin-right: 2%;    
+}
+
+.pageadmin .pageadmincorp .questionnaire .questionnairecontenu .questionnairetexte {
+    width: 100%;
+}
+
+.pageadmin .pageadmincorp .questionnaire .questionnairecontenu .questionnairetexte .questionnairetextetitre p {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+}
+
+.pageadmin .pageadmincorp .questionnaire .questionnairecontenu .questionnairetexte .questionnairetextedesc p {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.pageadmin .pageadmincorp .questionnaire .questionnairecontenu .questionnairebouton {
+    display: flex;
+    flex-direction: row;
+}
+
+.pageadmin .pageadmincorp .questionnaire .questionnairecontenu .questionnairebouton button {
+    background: none;
+    border: none;
+}
+
+.pageadmin .pageadmincorp .questionnaire .questionnairecontenu .questionnairebouton button a {
+    text-decoration: none;
+}

@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CESIZen - Accueil{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+<div class="pageaccueil" data-edit="{{ isEdit ? 'true' : 'false' }}">
+
+    {% if app.user and app.user.role.nomRole == 'ROLE_ADMIN' %}
+    <div class="creecontenu">
+        <button id="openModal" class="">+  Créer un nouveau contenu</button>
+    </div>
+
+    <div id="modal-form" class="modalcontenu">
+        <div class="modal-content">
+                <span class="close-modal">&times;</span>
+
+            <div class="modalcontenuentete">
+                <div class="modalcontenuentetetitre">
+                    <h3>
+                        {{ form.vars.value.id ? 'Modifier un contenu' : 'Créer un contenu' }}
+                    </h3>
+                </div>
+                <div class="modalcontenuentetetexte">
+                    <p>
+                        Vous souhaitez postez un article visible à tous ? Il suffit de composez votre contenu en remplissant les champs ci-dessous.
+                    </p>
+                </div>
+            </div>
+            <div class="modalcontenucorp">
+                <div class="modalcontenucorpform">
+                    {{ form_start(form, {'attr': {'id': 'contenu-form'}}) }}
+                        <div class="group-form">
+                            {{ form_row(form.titre) }}
+                        </div>
+                        <div class="group-form">
+                            {{ form_row(form.texte) }}
+                        </div>
+                        <div class="group-form">
+                            {{ form_row(form.imageFile) }} 
+                        </div>
+                        <div class="modalcontenucorpformbutton">
+                            <button type="submit">Publier</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    {% endif %} 
+
+
+
+
+
+
+    <div class="globalcontenu">
+        {% for contenu in contenus %}
+        <div class="contenu">
+            <div class="contenuentete">
+                <div class="contenuentetegauche">
+                    <div class="contenuenteteprofil">
+                        {{ contenu.utilisateur ? contenu.utilisateur.prenom|slice(0,1)|upper ~ contenu.utilisateur.nom|slice(0,1)|upper : '' }}
+                    </div>
+                    <div class="contenuenteteidentite">
+                        {{ contenu.utilisateur.prenom }} {{ contenu.utilisateur.nom }}
+                    </div>
+                </div>
+                {% if app.user and app.user.role.nomRole == 'ROLE_ADMIN' %}
+                <div class="contenuentetedroite">
+                    <button class="edit-btn" data-id="{{ contenu.id }}">✏️</button>                           
+                </div>
+                {% endif %}
+
+                
+            </div>
+            <div class="contenucorp">
+                <div class="contenucorptexte">
+                    <p>{{ contenu.texte }}</p>
+                </div>
+                <div class="contenucorpimage">
+                    <img src="{{ asset('uploads/images/' ~ contenu.urlImage) }}" alt="Image de contenu">
+                </div>
+            </div>
+        </div>
+    {% else %}
+    <div class="aucuncontenu">
+        <p>Aucun contenu n'a encore été posté...</p>
+    </div>
+    {% endfor %}
+
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

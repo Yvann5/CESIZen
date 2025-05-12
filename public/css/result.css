@@ -1,0 +1,128 @@
+.pageresultat {
+    margin-left: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+.pageresultat .contenuresultat {
+    width: 50%; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 6px solid #6BFC56;
+}
+
+.pageresultat .contenuresultat .utilisateurpasconnecte {
+    background-color: rgba(255, 0, 0, 0.19);
+    color: rgb(119, 16, 16);
+    padding: 10px;
+    padding-left: 16px;
+    border: 1px solid rgb(167, 40, 40);
+    border-radius: 4px;
+    margin-bottom: 6%;
+}
+
+.pageresultat .contenuresultat .contenuresultattitre {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pageresultat .contenuresultat .contenuresultattitre h2 {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp {
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatimage {
+    text-align: center;
+    margin-top: 4%;
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatimage img {
+    width: 40%;
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatscore {
+    text-align: center;
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatscore h4 {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: black; 
+    font-size: 20px;
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatdescription {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: black;
+    
+
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatbouton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 4%;
+    margin-top: 6%;
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatbouton .contenuresultatboutonaccueil {
+
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatbouton .contenuresultatboutonaccueil button {
+    color: white;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    background-color: #6BFC56;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatbouton .contenuresultatboutonaccueil button a {
+    text-decoration: none;
+    color: white;
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatbouton .contenuresultatboutondiagnostique {
+
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatbouton .contenuresultatboutondiagnostique button {
+    color:#6BFC56;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    border: 2px solid #6BFC56;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: white;
+
+    
+}
+
+.pageresultat .contenuresultat .contenuresultatcorp .contenuresultatbouton .contenuresultatboutondiagnostique button a {
+    text-decoration: none;
+    color: #6BFC56;
+}
+
+
+/*
+.pageresultat .contenuresultat .contenuresultatcorp
+.pageresultat .contenuresultat .contenuresultatcorp
+.pageresultat .contenuresultat .contenuresultatcorp
+.pageresultat .contenuresultat .contenuresultatcorp
+.pageresultat .contenuresultat .contenuresultatcorp
+

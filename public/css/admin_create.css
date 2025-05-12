@@ -1,0 +1,113 @@
+.pagecreate {
+    margin-left: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.pagecreatecontenu {
+    width: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 6px solid #6BFC56;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.pagecreatetitre {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pagecreatetitre h3 {
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: black;
+}
+
+.pagecreatecorpquestionnairetitre,
+.pagecreatecorpquestionnairedescription {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1%;
+}
+
+.pagecreate label {
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-size: 18px;
+}
+
+.pagecreate input[type="text"],
+.pagecreate input[type="number"],
+.pagecreate textarea {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 4px;
+    border: 1px solid #6BFC56;
+    font-family: 'Inter', sans-serif;
+}
+
+.pagecreatecorpquestionnairetitrequestion h4 {
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Bloc de chaque question */
+.pagecreate .question-block {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-top: 1px solid #333;
+}
+
+.pagecreate .question-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.reponses-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.reponse-block {
+    margin-bottom: 12px;
+    padding-left: 10px;
+    border-left: 3px solid #6BFC56;
+}
+
+.boutonajouter, .boutoncreer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.boutonajouter button,
+.boutoncreer button {
+    background-color: #6BFC56;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}

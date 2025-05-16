@@ -85,16 +85,4 @@ document.querySelectorAll('.toggle-questions').forEach(btn => {
 });
 
 
-const questionContainer = document.getElementById('questionnaire_questions');
-            const addQuestionButton = document.getElementById('add-question');
-            let index = {{ form.questions|length }};
 
-            addQuestionButton.addEventListener('click', function () {
-                let prototype = questionContainer.dataset.prototype;
-                let newForm = prototype.replace(/__name__/g, index);
-                let div = document.createElement('div');
-                div.classList.add('question-block');
-                div.innerHTML = newForm;
-                questionContainer.appendChild(div);
-                index++;
-            });

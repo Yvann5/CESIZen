@@ -37,6 +37,15 @@ class DiagnosticAdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $questionnaire = $form->getData();
+
+            foreach ($questionnaire->getQuestions() as $question) {
+                foreach ($question->getReponses() as $reponse) {
+                    // forcer la relation inverse (sécurité)
+                    $reponse->setQuestion($question);
+                }
+            }
             // Persister le questionnaire
             $em->persist($questionnaire);
             $em->flush();

@@ -1,0 +1,112 @@
+/* Police Roboto sur tout */
+body, input, button, label {
+    font-family: 'Roboto', sans-serif;
+}
+
+.pageprofil {
+    margin-left: 280px;
+}
+
+/* Container global */
+.pageprofil .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Section distincte */
+.profile-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 35px;
+    margin-bottom: 50px;
+    box-shadow: 0 8px 20px rgba(107, 252, 86, 0.15);
+}
+
+/* Titres */
+.section-title {
+    color: #333;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    border-left: 6px solid #6BFC56;
+    padding-left: 12px;
+}
+
+/* Form group spacing */
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+/* Input styling */
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+/* Bordure verte au focus */
+.form-input:focus {
+    border-color: #6BFC56;
+    box-shadow: 0 0 8px rgba(107, 252, 86, 0.6);
+}
+
+/* Boutons */
+.btn {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    min-width: 200px;
+    text-align: center;
+}
+
+/* Bouton primaire vert */
+.btn-primary {
+    background-color: #6BFC56;
+    color: #fff;
+    box-shadow: 0 6px 15px rgba(107, 252, 86, 0.45);
+}
+
+.btn-primary:hover {
+    background-color: #58e145;
+}
+
+/* Bouton secondaire jaune/orange */
+.btn-secondary {
+    background-color: #f4a261;
+    color: #fff;
+    box-shadow: 0 6px 15px rgba(244, 162, 97, 0.45);
+}
+
+.btn-secondary:hover {
+    background-color: #e38b3b;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .pageprofil .container {
+        padding: 20px 15px;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: auto;
+    }
+}

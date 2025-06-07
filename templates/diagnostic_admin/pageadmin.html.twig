@@ -59,6 +59,55 @@
         
         </div>
 
+        <h2 style="margin-top: 50px;">Gestion des utilisateurs</h2>
+<table class="table table-hover mt-3 shadow" style="border-radius: 12px; overflow: hidden;">
+    <thead style="background-color: #6BFC56; color: black;">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr style="background-color: #f9f9f9;">
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>
+                    {{ utilisateur.role ? utilisateur.role.nomRole : 'Aucun rôle' }}
+                </td>
+                <td class="d-flex gap-2 justify-content-center">
+                    <form method="post" action="{{ path('admin_change_user_role', {'id': utilisateur.id}) }}" class="d-flex gap-2 align-items-center">
+                        <select name="role_id" class="form-select form-select-sm" style="width: auto;">
+                            {% for role in roles %}
+                                <option value="{{ role.id }}" {% if utilisateur.role and utilisateur.role.id == role.id %}selected{% endif %}>
+                                    {{ role.nomRole }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <button class="btn btn-sm" style="background-color: #6BFC56; color: #000; font-weight: bold;" type="submit">
+                            ✔️ Modifier
+                        </button>
+                    </form>
+
+                    <form method="post" action="{{ path('supprimer_utilisateur', {'id': utilisateur.id}) }}" onsubmit="return confirm('Confirmer la suppression de ce compte ?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-sm btn-danger" type="submit">❌ Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center">Aucun utilisateur trouvé.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
         
     </div>
 

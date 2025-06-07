@@ -36,6 +36,7 @@
                     <ul class="sidebar-links">
                         <li><a href="{{ path('app_home') }}"><i class="fas fa-home icon"></i>Accueil</a></li>
                         <li><a href="{{ path('app_diagnostic') }}"><i class="fas fa-folder icon"></i>Diagnostique</a></li>
+                        <li><a href="{{ path('app_profil') }}"><i class="fas fa-user icon"></i>Mon profil</a></li>
                         {% if app.user and app.user.role.nomRole == 'ROLE_ADMIN' %}
                         <li><a href="{{ path('app_diagnostic_admin') }}"><i class="fas fa-cog icon"></i>Admin</a></li>
                         {% endif %}

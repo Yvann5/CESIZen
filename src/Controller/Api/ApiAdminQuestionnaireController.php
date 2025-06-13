@@ -13,6 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Questionnaire;
 use App\Entity\Question;
 use App\Entity\Reponse;
+use App\Repository\UtilisateurRepository;
+use App\Entity\Utilisateur;
+
+
 
 class ApiAdminQuestionnaireController extends AbstractController
 {
@@ -163,4 +167,86 @@ class ApiAdminQuestionnaireController extends AbstractController
         $em->flush();
         return $this->json(null, 204);
     }
+
+    #[Route('/api/utilisateurs', name: 'api_utilisateurs_list', methods: ['GET'])]
+    public function listUsers(UtilisateurRepository $utilisateurRepository): JsonResponse
+    {
+        $users = $utilisateurRepository->findAll();
+        $data = [];
+
+        foreach ($users as $user) {
+            $data[] = [
+                'id' => $user->getId(),
+                'nom' => $user->getNom(),
+                'prenom' => $user->getPrenom(),
+                'email' => $user->getEmail(),
+                'roles' => $user->getRoles(),
+            ];
+        }
+
+        return $this->json($data);
+    }
+
+    #[Route('/api/utilisateurs/{id}/role', name: 'api_utilisateur_update_role', methods: ['PATCH'])]
+public function updateRole(
+    int $id,
+    Request $request,
+    UtilisateurRepository $userRepository,
+    EntityManagerInterface $em,
+    \App\Repository\RoleRepository $roleRepository // injecter le repository Role
+): JsonResponse {
+    $user = $userRepository->find($id);
+    if (!$user) {
+        return $this->json(['error' => 'Utilisateur non trouvé'], 404);
+    }
+
+    $data = json_decode($request->getContent(), true);
+
+    if (!isset($data['role'])) { // j'utilise 'role' au singulier pour coller à ta structure
+        return $this->json(['error' => 'Le champ role est requis'], 400);
+    }
+
+    $roleName = $data['role'];
+
+    // Liste des rôles autorisés (noms des rôles en base)
+    $allowedRoles = ['ROLE_USER', 'ROLE_ADMIN'];
+
+    if (!in_array($roleName, $allowedRoles)) {
+        return $this->json(['error' => 'Rôle non valide'], 400);
+    }
+
+    // Recherche le Role en base par son nom
+    $role = $roleRepository->findOneBy(['nomRole' => $roleName]);
+    if (!$role) {
+        return $this->json(['error' => 'Rôle introuvable en base'], 404);
+    }
+
+    // Met à jour le rôle de l'utilisateur
+    $user->setRole($role);
+    $em->flush();
+
+    return $this->json(['message' => 'Rôle mis à jour avec succès']);
+}
+
+
+
+    #[Route('/api/utilisateurs/{id}', name: 'api_utilisateur_delete', methods: ['DELETE'])]
+    public function deleteUser(
+        int $id,
+        UtilisateurRepository $userRepository,  // <- ici c’est UtilisateurRepository
+        EntityManagerInterface $em
+    ): JsonResponse {
+        $user = $userRepository->find($id);
+        if (!$user) {
+            return $this->json(['error' => 'Utilisateur non trouvé'], 404);
+        }
+
+        $em->remove($user);
+        $em->flush();
+
+        return $this->json(null, 204);
+    }
+
+
+
 }

@@ -74,7 +74,8 @@
                 </div>
                 {% if app.user and app.user.role.nomRole == 'ROLE_ADMIN' %}
                 <div class="contenuentetedroite">
-                    <button class="edit-btn" data-id="{{ contenu.id }}">✏️</button>                           
+                    <button class="edit-btn" data-id="{{ contenu.id }}">✏️</button> 
+                    <button class="suppr-btn" data-id="{{ contenu.id }}">❌</button>                                                     
                 </div>
                 {% endif %}
 

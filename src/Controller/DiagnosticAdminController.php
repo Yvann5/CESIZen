@@ -6,6 +6,10 @@ namespace App\Controller;
 use App\Entity\Questionnaire;
 use App\Form\QuestionnaireType;
 use App\Repository\QuestionnaireRepository;
+use App\Repository\UtilisateurRepository;
+use App\Repository\RoleRepository;
+use App\Entity\Utilisateur;
+use App\Entity\Role;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,13 +22,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class DiagnosticAdminController extends AbstractController
 {
     #[Route('/admin/diagnostic', name: 'app_diagnostic_admin')]
-    public function index(EntityManagerInterface $em): Response
+    public function index(EntityManagerInterface $em, UtilisateurRepository $utilisateurRepo, RoleRepository $roleRepo): Response
     {
         // Utiliser l'EntityManagerInterface pour récupérer les questionnaires
         $questionnaires = $em->getRepository(Questionnaire::class)->findAll();
+        $utilisateurs = $utilisateurRepo->findAll();
+        $roles = $roleRepo->findAll();
 
         return $this->render('diagnostic_admin/pageadmin.html.twig', [
             'questionnaires' => $questionnaires,
+            'utilisateurs' => $utilisateurs,
+            'roles' => $roles,
         ]);
     }
 
@@ -37,6 +45,15 @@ class DiagnosticAdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $questionnaire = $form->getData();
+
+            foreach ($questionnaire->getQuestions() as $question) {
+                foreach ($question->getReponses() as $reponse) {
+                    // forcer la relation inverse (sécurité)
+                    $reponse->setQuestion($question);
+                }
+            }
             // Persister le questionnaire
             $em->persist($questionnaire);
             $em->flush();
@@ -82,5 +99,36 @@ class DiagnosticAdminController extends AbstractController
 
         return $this->redirectToRoute('app_diagnostic_admin');
     }
+
+    #[Route('/admin/user/{id}/changer-role', name: 'admin_change_user_role', methods: ['POST'])]
+    public function changeUserRole(
+        Utilisateur $utilisateur,
+        Request $request,
+        EntityManagerInterface $em
+    ): Response {
+        $roleId = $request->request->get('role_id');
+        $role = $em->getRepository(Role::class)->find($roleId);
+
+        if ($role) {
+            $utilisateur->setRole($role);
+            $em->flush();
+
+            $this->addFlash('success', 'Rôle mis à jour avec succès.');
+        }
+
+        return $this->redirectToRoute('app_diagnostic_admin');
+    }
+
+    #[Route('/admin/utilisateur/{id}/supprimer', name: 'supprimer_utilisateur', methods: ['POST'])]
+    public function supprimerUtilisateur(Utilisateur $utilisateur, EntityManagerInterface $em): Response
+    {
+        $em->remove($utilisateur);
+        $em->flush();
+
+        $this->addFlash('success', 'Utilisateur supprimé avec succès.');
+
+        return $this->redirectToRoute('app_diagnostic_admin');
+    }
+
 }
 

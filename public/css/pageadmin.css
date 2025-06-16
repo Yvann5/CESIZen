@@ -58,3 +58,21 @@
 .pageadmin .pageadmincorp .questionnaire .questionnairecontenu .questionnairebouton button a {
     text-decoration: none;
 }
+
+
+.pageadmin table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.pageadmin th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.pageadmin form {
+    margin: 0;
+}

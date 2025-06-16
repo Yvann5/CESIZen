@@ -1,4 +1,3 @@
-{# templates/diagnostic_admin/create.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Créer un questionnaire{% endblock %}
@@ -6,6 +5,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
 {% endblock %}
+
 {% block javascripts %}
     <script src="{{ asset('js/admin_create.js') }}"></script>
 {% endblock %}
@@ -20,6 +20,7 @@
         <div class="pagecreatecorp">
             <div class="pagecreatecorpquestionnaire">
                 {{ form_start(form) }}
+
                 <div class="pagecreatecorpquestionnairetitre">
                     {{ form_row(form.titre) }}
                 </div>
@@ -31,38 +32,42 @@
                     <h4>Questions du questionnaire</h4>
                 </div>
 
-                {# Prépare le prototype complet des questions avec leur prototype de réponses intégré #}
+                {# Prototype des questions (chaque question contient aussi ses réponses) #}
                 {% set questionPrototype %}
-                    {% set q = form.questions.vars.prototype %}
+                    {% set prototype = form.questions.vars.prototype %}
                     <div class="question-block">
-                        {{ form_row(q.texteQuestion) }}
+                        {{ form_row(prototype.texteQuestion) }}
 
-                        <div class="reponses-container"
-                             data-prototype="{{ form_widget(q.reponses.vars.prototype)|e('html_attr') }}">
-                            <h6 class="reponses-title">Réponses</h6>
+                        {% set reponsePrototype = form_widget(prototype.reponses.vars.prototype) | e('html_attr') %}
+                        <div class="reponses-container" data-prototype="{{ reponsePrototype }}">
+                            <h6>Réponses</h6>
+                            {% for reponseForm in prototype.reponses %}
+                                <div class="reponse-block">
+                                    {{ form_row(reponseForm.texteReponse) }}
+                                    {{ form_row(reponseForm.valeur) }}
+                                </div>
+                            {% endfor %}
+                            <button type="button" class="add-reponse">Ajouter une réponse</button>
                         </div>
                     </div>
                 {% endset %}
 
-                <div class="pagecreatecorpquestionnairereponse"
-                     id="questionnaire_questions"
-                     data-prototype="{{ questionPrototype|e('html_attr') }}">
+                <div id="questions-container" data-prototype="{{ questionPrototype|e('html_attr') }}">
                     {% for questionForm in form.questions %}
                         <div class="question-block">
                             {{ form_row(questionForm.texteQuestion) }}
 
-                            <div class="reponses-container"
-                                 data-prototype="{{ form_widget(questionForm.reponses.vars.prototype)|e('html_attr') }}">
-                                <h6 class="reponses-title">Réponses</h6>
+                            {% set reponsePrototype = form_widget(questionForm.reponses.vars.prototype) | e('html_attr') %}
+                            <div class="reponses-container" data-prototype="{{ reponsePrototype }}">
+                                <h6>Réponses</h6>
                                 {% for reponseForm in questionForm.reponses %}
                                     <div class="reponse-block">
                                         {{ form_row(reponseForm.texteReponse) }}
                                         {{ form_row(reponseForm.valeur) }}
                                     </div>
                                 {% endfor %}
+                                <button type="button" class="add-reponse">Ajouter une réponse</button>
                             </div>
-
-                            <button type="button" class="add-reponse">Ajouter une réponse</button>
                         </div>
                     {% endfor %}
                 </div>
@@ -74,6 +79,7 @@
                 <div class="boutoncreer">
                     <button type="submit">Créer</button>
                 </div>
+
                 {{ form_end(form) }}
             </div>
         </div>

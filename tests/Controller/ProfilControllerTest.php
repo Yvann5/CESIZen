@@ -49,7 +49,7 @@ class ProfilControllerTest extends WebTestCase
         $client = static::createClient();
         $user = $this->createUser($client);
 
-        // Simule l'authentification
+        // Simule l'authentificationn
         $client->loginUser($user);
 
         $client->request('GET', '/api/profil');

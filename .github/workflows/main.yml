@@ -1,0 +1,41 @@
+name: CI-CD
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Java / Node / Flutter
+      uses: actions/setup-java@v3  # ou setup-node / setup-flutter selon ton projet
+      with:
+        java-version: '17'
+
+    - name: Install dependencies
+      run: ./gradlew build  # adapter selon ton projet
+
+    - name: Run tests
+      run: ./gradlew test
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v1
+      with:
+        organization: ton-org
+        projectKey: CESIZen
+        projectName: CESIZen
+
+    - name: Build Docker image
+      run: docker build -t cesizen:latest .
+
+    - name: Deploy to Test Environment
+      run: |
+        docker run -d -p 8080:8080 cesizen:latest

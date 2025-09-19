@@ -1,4 +1,4 @@
-name: Symfony CI/CD 2
+name: Symfony CI/CD
 
 on:
   push:
@@ -44,11 +44,13 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
+          projectBaseDir: .
           args: >
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.projectKey=CESIZen
             -Dsonar.organization=ton-org
+            -Dsonar.projectKey=CESIZen
             -Dsonar.host.url=https://sonarcloud.io
 
       - name: Build Docker image

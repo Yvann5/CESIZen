@@ -1,4 +1,4 @@
-name: CI-CD
+name: Symfony CI/CD
 
 on:
   push:
@@ -11,31 +11,49 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: cesizen_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup Java / Node / Flutter
-      uses: actions/setup-java@v3  # ou setup-node / setup-flutter selon ton projet
-      with:
-        java-version: '17'
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'   # adapte selon ton projet
+          extensions: mbstring, intl, pdo_mysql
+          coverage: xdebug
 
-    - name: Install dependencies
-      run: ./gradlew build  # adapter selon ton projet
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-    - name: Run tests
-      run: ./gradlew test
+      - name: Run tests
+        run: php bin/phpunit --testsuite unit
 
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1
-      with:
-        organization: ton-org
-        projectKey: CESIZen
-        projectName: CESIZen
+      # Optionnel : Analyse qualité et sécurité avec SonarCloud
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v1
+        with:
+          organization: ton-org
+          projectKey: CESIZen
+          projectName: CESIZen
 
-    - name: Build Docker image
-      run: docker build -t cesizen:latest .
+      # Optionnel : Build Docker
+      - name: Build Docker image
+        run: docker build -t cesizen:latest .
 
-    - name: Deploy to Test Environment
-      run: |
-        docker run -d -p 8080:8080 cesizen:latest
+      # Optionnel : Deploy to Test Environment
+      - name: Deploy to Test Environment
+        run: docker run -d -p 8080:80 cesizen:latest

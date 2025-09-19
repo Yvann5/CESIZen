@@ -1,4 +1,4 @@
-name: Symfony CI/CD
+name: Symfony CI/CD 2
 
 on:
   push:
@@ -32,28 +32,27 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'   # adapte selon ton projet
+          php-version: '8.2'       # adapte à ta version PHP
           extensions: mbstring, intl, pdo_mysql
           coverage: xdebug
 
       - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-      - name: Run tests
+      - name: Run unit tests
         run: php bin/phpunit --testsuite unit
 
-      # Optionnel : Analyse qualité et sécurité avec SonarCloud
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v1
+        uses: SonarSource/sonarcloud-github-action@v2
         with:
-          organization: ton-org
-          projectKey: CESIZen
-          projectName: CESIZen
+          args: >
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.projectKey=CESIZen
+            -Dsonar.organization=ton-org
+            -Dsonar.host.url=https://sonarcloud.io
 
-      # Optionnel : Build Docker
       - name: Build Docker image
         run: docker build -t cesizen:latest .
 
-      # Optionnel : Deploy to Test Environment
       - name: Deploy to Test Environment
         run: docker run -d -p 8080:80 cesizen:latest

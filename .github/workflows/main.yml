@@ -1,4 +1,4 @@
-name: Symfony CI/CD
+name: Symfony CI/CD 2
 
 on:
   push:
@@ -49,7 +49,7 @@ jobs:
         with:
           projectBaseDir: .
           args: >
-            -Dsonar.organization=ton-org
+            -Dsonar.organization=yvann5
             -Dsonar.projectKey=CESIZen
             -Dsonar.host.url=https://sonarcloud.io
 
